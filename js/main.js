@@ -142,7 +142,7 @@ $(document).keyup(function (event) {
                                "ArrowDown", "ControlRight", "ControlLeft", "AltRight", "AltLeft", "CapsLock",
                                "MetaLeft", "", "Semicolon", "Quote", "Enter", "BracketRight", "Backslash", 
                                "BracketLeft", "Minus", "Equal", "Period", "Comma", "NumLock", "NumpadAdd",
-                               "NumpadSubtract", "NumpadDivide", "NumpadMultiply"
+                               "NumpadSubtract", "NumpadDivide", "NumpadMultiply", "KeyA"
                               ];
 
         conditionsLetters.forEach(element => {
