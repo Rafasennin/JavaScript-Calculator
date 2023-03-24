@@ -1,0 +1,100 @@
+:root{
+    --white-background: #e2e2e2;
+    --dark-shadow: #b5b5b5;
+    --light-shadow: #ffffff;
+    --text-color: #333;
+}
+
+body{
+    box-sizing: border-box;
+    background: url(/Projeto_mentoria_4/assets/img/clearWater.jpg);
+    background-size: cover;
+    -webkit-animation: slidein 100s;
+        animation: slidein 100s;
+
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;   
+}
+
+.calc__body{
+    width: 350px;
+    height: 450px;
+    box-sizing: border-box;
+    background-color: var(--white-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 100px auto;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 6px 6px 12px var(--dark-shadow), -6px -6px 12px var(--light-shadow);
+}
+
+.input__text{
+    text-align: right;
+    font-size: x-large;
+    width:300px;
+    height: 60px;
+    background: var(--white-background);
+    border: none;
+    box-shadow: inset 5px 5px 10px var(--dark-shadow), inset -5px -5px 10px var(--light-shadow);
+    border-radius: 19px; 
+    position: absolute; 
+    top: 120px;  
+}
+
+@-webkit-keyframes slidein {
+    from {background-position: top; background-size:3000px; }
+    to {background-position: -100px 0px;background-size:2750px;}
+    }
+    
+    @keyframes slidein {
+    from {background-position: top;background-size:3000px; }
+    to {background-position: -100px 0px;background-size:2750px;}
+    
+    }
+
+.calc__keys{
+    width:300px;
+    height: 330px;
+    border-radius: 30px; 
+    position: relative; 
+    top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr repeat(5);
+    background: var(--white-background);
+    border: none;
+    box-shadow: inset 5px 5px 10px var(--dark-shadow), inset -5px -5px 10px var(--light-shadow);
+    border-radius: 20px; 
+}
+
+.input__button{
+    width: 4em;
+    height: 2em;
+    border-radius: 10px;
+    font-weight: bolder;
+    margin-top: 1.5em;
+    text-align: center;
+    vertical-align: middle;
+    background: var(--white-background);
+    border: none;
+    box-shadow: 6px 6px 12px var(--dark-shadow), -6px -6px 12px var(--light-shadow);
+    border-radius: 20px; 
+}
+
+.input__button:hover{
+    cursor: pointer;
+}
+
+.input__button:active{
+    box-shadow: 1px 1px 5px var(--dark-shadow), -1px -1px 5px var(--light-shadow);
+    
+}

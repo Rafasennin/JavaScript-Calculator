@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora JavaScript</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css">
+</head>
+
+<body>
+    <div class="calc__body" id="calc__body">
+        <div class="display" id="display">
+            <input type="text" class="input__text" id="input__text">
+        </div>
+
+        <div class="calc__keys" id="calc__keys">
+            <div class="keys" id="keys">
+                <input type="button" onclick="reload()" class="input__button button__C" id="input__button button__C"
+                    value="C">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__()" id="input__button button__()" value="()">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__%" id="input__button button__%" value="%">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__/" id="input__button button__/" value="/"
+                    onclick="div()">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__7" id="input__button button__7" value="7">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__8" id="input__button button__8" value="8">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__9" id="input__button button__9" value="9">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__*" id="input__button button__*" value="X"
+                    onclick="mult()">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__4" id="input__button button__4" value="4">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__5" id="input__button button__5" value="5">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__6" id="input__button button__6" value="6">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__-" id="input__button button__-" value="-"
+                    onclick="sub()">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__1" id="input__button button__1" value="1">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__2" id="input__button button__2" value="2">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__3" id="input__button button__3" value="3">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__+" id="input__button button__+" value="+"
+                    onclick="sum()">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__+/-" id="input__button button__+/-" value="+/-">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__0" id="input__button button__0" value="0">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__." id="input__button button__." value=".">
+            </div>
+
+            <div class="keys" id="keys">
+                <input type="button" class="input__button button__=" id="input__button button__=" value="="
+                    onclick="result()">
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="js/main.js"></script>
+
+</html>
