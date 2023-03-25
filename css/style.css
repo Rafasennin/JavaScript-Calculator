@@ -31,10 +31,12 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 100px auto;
     border: none;
     border-radius: 20px;
     box-shadow: 6px 6px 12px var(--dark-shadow), -6px -6px 12px var(--light-shadow);
+    cursor:move;
+    position: relative;
+    user-select: none;
 }
 
 .input__text{
@@ -46,8 +48,9 @@ body{
     border: none;
     box-shadow: inset 5px 5px 10px var(--dark-shadow), inset -5px -5px 10px var(--light-shadow);
     border-radius: 19px; 
-    position: absolute; 
-    top: 120px;  
+    position: relative; 
+    top: -175px;  
+    left: 145px;
 }
 
 @-webkit-keyframes slidein {
@@ -67,6 +70,7 @@ body{
     border-radius: 30px; 
     position: relative; 
     top: 40px;
+    right: 150px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr repeat(5);
@@ -88,6 +92,7 @@ body{
     border: none;
     box-shadow: 6px 6px 12px var(--dark-shadow), -6px -6px 12px var(--light-shadow);
     border-radius: 20px; 
+    margin: 10px;
 }
 
 .input__button:hover{

@@ -19,47 +19,37 @@ for (let index = 0; index < keys.length; index++) {
 
 function reload(){
     keysString[0] ="";
-    window.location.reload();
+    display.value="";
 };
 
 var number1 = 0;
 var signal ="";
 
-function sum(){
-    number1 = display.value;
-    signal="+";
-    display.value= ""; 
-    keysString[15]=""; 
-    log(number1)
-}
+//Numpad of Keyboard functionality for (+; -; *; / and =)
 
 $(window).keypress(function (e) { 
     if(e.code === "NumpadAdd"){
         number1 = display.value;
         signal="+";
         display.value= ""; 
-        log(number1)
     }  
 
     if(e.code === "NumpadSubtract"){
         number1 = display.value;
         signal="-";
         display.value= ""; 
-        log(number1)
     }  
 
     if(e.code === "NumpadDivide"){
         number1 = display.value;
         signal="/";
         display.value= ""; 
-        log(number1)
     }  
 
     if(e.code === "NumpadMultiply"){
         number1 = display.value;
         signal="*";
         display.value= ""; 
-        log(number1)
     } 
 
     if(e.code === "NumpadEnter"){
@@ -68,56 +58,62 @@ $(window).keypress(function (e) {
     
 });
 
+//Calculator keypad functionality for "+"
+function sum(){
+    number1 = display.value;
+    signal="+";
+    display.value= ""; 
+    keysString[15]=""; 
+}
 
+//Calculator keypad functionality for "-"
 function sub(){
     number1 = display.value;
     signal="-";
     display.value= ""; 
     keysString[11]=""; 
-    log(number1)
 }
 
+//Calculator keypad functionality for "*"
 function mult(){
     number1 = display.value;
     signal="*";
     display.value= ""; 
     keysString[7]=""; 
-    log(number1)
 }
 
+//Calculator keypad functionality for "/"
 function div(){
     number1 = display.value;
     signal="/";
     display.value= ""; 
     keysString[3]=""; 
-    log(number1)
 }
 
-
+//Calculator keypad functionality for "="
 function result(){
    let n1 = parseFloat(number1);
    let n2 = parseFloat(display.value);
 
    if(signal ==="+"){
-        let fresult = display.value = n1 + n2;
+        display.value = n1 + n2;
         keysString[19]="";
-        log(fresult)
 
    }else if(signal ==="-"){
-        let fresult = display.value = n1 - n2;
+        display.value = n1 - n2;
         keysString[19]="";
-        log(fresult)
 
     }else if(signal ==="*"){
-        let fresult = display.value = n1 * n2;
+        display.value = n1 * n2;
         keysString[19]="";
-        log(fresult)
+
 
     }else if(signal ==="/"){
-        let fresult = display.value = n1 / n2;
+        display.value = n1 / n2;
         keysString[19]="";
-        log(fresult)
     }
+
+    
 }
 
 $(document).keyup(function (event) { 
@@ -126,8 +122,7 @@ $(document).keyup(function (event) {
     let number = event.charCode;
 
     if(code === "Escape"){
-       window.location.reload()
-
+       display.value = "";
     }else{
 
     display.value += event.key; 
@@ -155,3 +150,30 @@ $(document).keyup(function (event) {
 })
 
    
+//Movement of calculator body
+
+const calcBody = document.getElementById("calc__body");
+
+var x = 0;
+var y = 0;
+
+mousedown =false;
+
+
+$("#calc__body").mousedown(function (e) { 
+    mousedown = true;
+    x = calcBody.offsetLeft - e.clientX;
+    y = calcBody.offsetTop - e.clientY; 
+});
+
+
+$(document).mouseup(function (e) { 
+    mousedown = false;
+});
+
+$(document).mousemove(function (e) { 
+    if(mousedown){
+        calcBody.style.left = e.clientX + x + "px";
+        calcBody.style.top = e.clientY + y + "px";
+    }    
+});
