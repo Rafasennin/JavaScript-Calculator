@@ -18,15 +18,14 @@ for (let index = 0; index < keys.length; index++) {
 }
 
 function reload(){
-    keysString[0] ="";
-    display.value="";
+    window.location.reload();
 };
 
 var number1 = 0;
+var number2 = 0;
 var signal ="";
 
 //Numpad of Keyboard functionality for (+; -; *; / and =)
-
 $(window).keypress(function (e) { 
     if(e.code === "NumpadAdd"){
         number1 = display.value;
@@ -59,12 +58,14 @@ $(window).keypress(function (e) {
 });
 
 //Calculator keypad functionality for "+"
-function sum(){
-    number1 = display.value;
+keys[15].addEventListener("click", ()=> { 
+    number1 = parseFloat(display.value);
     signal="+";
     display.value= ""; 
     keysString[15]=""; 
-}
+    log("Number1 is " + number1 + " Signal is " + signal)
+})
+
 
 //Calculator keypad functionality for "-"
 function sub(){
@@ -84,20 +85,30 @@ function mult(){
 
 //Calculator keypad functionality for "/"
 function div(){
-    number1 = display.value;
+    number1 = parseFloat(display.value);
     signal="/";
     display.value= ""; 
     keysString[3]=""; 
 }
 
+//Calculator keypad functionality for "%"
+keys[2].addEventListener("click", ()=> { 
+    number2 = parseFloat(display.value);
+    signal="%";
+    display.value= ""; 
+    keysString[2]=""; 
+    log("Number2 is " + number2 + " Signal is " + signal)
+})
+
 //Calculator keypad functionality for "="
-function result(){
+keys[19].addEventListener("click", ()=> { 
    let n1 = parseFloat(number1);
    let n2 = parseFloat(display.value);
+   let n3 = parseFloat(number2);
 
    if(signal ==="+"){
         display.value = n1 + n2;
-        keysString[19]="";
+        keysString[19]="";   
 
    }else if(signal ==="-"){
         display.value = n1 - n2;
@@ -111,10 +122,15 @@ function result(){
     }else if(signal ==="/"){
         display.value = n1 / n2;
         keysString[19]="";
-    }
 
-    
-}
+    } else if (signal ==="%"){
+        display.value = (number1 * number2) / 100 + number1;
+        keysString[19]="";
+        log(n1 + "," + n3)
+    }   
+})
+
+
 
 $(document).keyup(function (event) { 
     let code = event.code;
@@ -122,12 +138,12 @@ $(document).keyup(function (event) {
     let number = event.charCode;
 
     if(code === "Escape"){
-       display.value = "";
+       window.location.reload();
     }else{
 
     display.value += event.key; 
 
-    log(` Esta é a tecla "${name}", seu código é "${code}" e seu número de caracter é "${number}"`)
+    //log(` Esta é a tecla "${name}", seu código é "${code}" e seu número de caracter é "${number}"`)
     }
 
     const conditionsLetters = ["keyA", "KeyB", "KeyC", "KeyD", "KeyE", "KeyG", "KeyH", "KeyI", "KeyJ",
@@ -141,12 +157,11 @@ $(document).keyup(function (event) {
                               ];
 
         conditionsLetters.forEach(element => {
-
-          if(code === element){
-            display.value= "";
-          }
-        })
-     
+            if(code === element){
+                display.value = "";
+            }
+               
+        }) 
 })
 
    
