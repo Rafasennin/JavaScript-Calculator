@@ -17,8 +17,11 @@ for (let index = 0; index < keys.length; index++) {
     })   
 }
 
-function reload(){
+
+
+function reload(e){
     window.location.reload();
+    keysString[0] = "";
 };
 
 var number1 = 0;
@@ -31,6 +34,7 @@ $(window).keypress(function (e) {
         number1 = display.value;
         signal="+";
         display.value= ""; 
+        log(number1 + "," + signal)
     }  
 
     if(e.code === "NumpadSubtract"){
@@ -52,44 +56,69 @@ $(window).keypress(function (e) {
     } 
 
     if(e.code === "NumpadEnter"){
-        result();
-    } 
+
+        if(signal ==="+"){
+            display.value = number1 + number2;
+            keysString[19]="";   
+            log(number1 + ";" + number2)
     
+       }else if(signal ==="-"){
+            display.value = number1 - number2;
+            keysString[19]="";
+    
+        }else if(signal ==="*"){
+            display.value = number1 * number2;
+            keysString[19]="";
+    
+    
+        }else if(signal ==="/"){
+            display.value = number1 / number2;
+            keysString[19]="";
+    
+        } else if (signal ==="%"){
+            display.value = (number1 * number2) / 100 + number1;
+            keysString[19]="";
+            log(number1 + "," + n3)
+        }   
+
+    }
 });
 
 //Calculator keypad functionality for "+"
-keys[15].addEventListener("click", ()=> { 
+keys[15].addEventListener("click", (e)=> { 
     number1 = parseFloat(display.value);
     signal="+";
-    display.value= ""; 
-    keysString[15]=""; 
+    display.value= "";
     log("Number1 is " + number1 + " Signal is " + signal)
 })
 
 
 //Calculator keypad functionality for "-"
-function sub(){
-    number1 = display.value;
+keys[11].addEventListener("click", ()=> { 
+    number1 = parseFloat(display.value);
     signal="-";
     display.value= ""; 
     keysString[11]=""; 
-}
+    log("Number1 is " + number1 + " Signal is " + signal)
+})
 
 //Calculator keypad functionality for "*"
-function mult(){
-    number1 = display.value;
+keys[7].addEventListener("click", ()=> { 
+    number1 = parseFloat(display.value);
     signal="*";
     display.value= ""; 
     keysString[7]=""; 
-}
+    log("Number1 is " + number1 + " Signal is " + signal)
+})
 
 //Calculator keypad functionality for "/"
-function div(){
+keys[3].addEventListener("click", ()=> { 
     number1 = parseFloat(display.value);
     signal="/";
     display.value= ""; 
     keysString[3]=""; 
-}
+    log("Number1 is " + number1 + " Signal is " + signal)
+})
 
 //Calculator keypad functionality for "%"
 keys[2].addEventListener("click", ()=> { 
@@ -102,9 +131,9 @@ keys[2].addEventListener("click", ()=> {
 
 //Calculator keypad functionality for "="
 keys[19].addEventListener("click", ()=> { 
-   let n1 = parseFloat(number1);
-   let n2 = parseFloat(display.value);
-   let n3 = parseFloat(number2);
+    let n1 = parseFloat(number1);
+    let n2 = parseFloat(display.value);
+    let n3 = parseFloat(number2);
 
    if(signal ==="+"){
         display.value = n1 + n2;

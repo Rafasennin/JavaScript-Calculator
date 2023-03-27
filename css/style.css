@@ -7,19 +7,7 @@
 
 body{
     box-sizing: border-box;
-    background: url(/Projeto_mentoria_4/assets/img/clearWater.jpg);
-    background-size: cover;
-    -webkit-animation: slidein 100s;
-        animation: slidein 100s;
-
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-
-        -webkit-animation-iteration-count: infinite;
-        animation-iteration-count: infinite;
-
-        -webkit-animation-direction: alternate;
-        animation-direction: alternate;   
+    background: var(--white-background);
 }
 
 .calc__body{
@@ -44,7 +32,7 @@ body{
     font-size: x-large;
     width:300px;
     height: 60px;
-    background: var(--white-background);
+    background: var(--white-ba);
     border: none;
     box-shadow: inset 5px 5px 10px var(--dark-shadow), inset -5px -5px 10px var(--light-shadow);
     border-radius: 19px; 
@@ -52,17 +40,6 @@ body{
     top: -175px;  
     left: 145px;
 }
-
-@-webkit-keyframes slidein {
-    from {background-position: top; background-size:3000px; }
-    to {background-position: -100px 0px;background-size:2750px;}
-    }
-    
-    @keyframes slidein {
-    from {background-position: top;background-size:3000px; }
-    to {background-position: -100px 0px;background-size:2750px;}
-    
-    }
 
 .calc__keys{
     width:300px;
