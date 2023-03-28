@@ -57,33 +57,30 @@ $(window).keypress(function (e) {
         log("Number 1 is " + number1 + " and the signal is " + signal);
     } 
 
-    //Logical reult for (+, -, *, /)
-
+    //Logical result for keyboard numpad  (+, -, *, /)
     if(e.code === "NumpadEnter" && signal === "+" ){
-            let number2 = parseFloat(display.value);
-             let fResult = number1 + number2;
-             display.value = fResult;
-            keysString[19]="";   
-
-       }else if(e.code === "NumpadEnter" && signal === "-" ){
         let number2 = parseFloat(display.value);
-         let fResult = number1 - number2;
-         display.value = fResult;
+        let fResult = number1 + number2;
+        display.value = fResult;
+        
+    }else if(e.code === "NumpadEnter" && signal === "-" ){
+        let number2 = parseFloat(display.value);
+        let fResult = number1 - number2;
+        display.value = fResult;
         keysString[19]="";   
 
-       }else if(e.code === "NumpadEnter" && signal === "*" ){
+    }else if(e.code === "NumpadEnter" && signal === "*" ){
         let number2 = parseFloat(display.value);
-         let fResult = number1 * number2;
-         display.value = fResult;
+        let fResult = number1 * number2;
+        display.value = fResult;
         keysString[19]=""; 
 
-       }else if(e.code === "NumpadEnter" && signal === "/" ){
+    }else if(e.code === "NumpadEnter" && signal === "/" ){
         let number2 = parseFloat(display.value);
-         let fResult = number1 / number2;
-         display.value = fResult;
+        let fResult = number1 / number2;
+        display.value = fResult;
         keysString[19]="";   
-       }   
-
+    }   
 });
 
 //Calculator keypad functionality for "+"
