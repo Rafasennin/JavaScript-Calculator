@@ -6,7 +6,7 @@ const display = document.getElementById("input__text");
 const keys = document.querySelectorAll(".input__button");
 
 
-const keysString = ["C", "()", "%", "/", "7", "8", "9", "X","4", "5", 
+const keysString = ["C", "()", "%", "/", "7", "8", "9", "*","4", "5", 
                     "6", "-", "1", "2", "3", "+", "+/-", "0", ".", "="];
 
 
@@ -17,8 +17,6 @@ for (let index = 0; index < keys.length; index++) {
     })   
 }
 
-
-
 function reload(e){
     window.location.reload();
     keysString[0] = "";
@@ -27,102 +25,108 @@ function reload(e){
 var number1 = 0;
 var number2 = 0;
 var signal ="";
+var signalX = "";
 
-//Numpad of Keyboard functionality for (+; -; *; / and =)
+//Numpad of Keyboard functionalities for (+; -; *; / and =)
 $(window).keypress(function (e) { 
     if(e.code === "NumpadAdd"){
-        number1 = display.value;
+        number1 = parseFloat(display.value);
         signal="+";
         display.value= ""; 
-        log(number1 + "," + signal)
+        log("Number 1 is " + number1 + " and the signal is " + signal)
     }  
 
     if(e.code === "NumpadSubtract"){
         number1 = display.value;
         signal="-";
         display.value= ""; 
+        log("Number 1 is " + number1 + " and the signal is " + signal);
     }  
 
     if(e.code === "NumpadDivide"){
         number1 = display.value;
         signal="/";
         display.value= ""; 
+        log("Number1 is " + number1 + " and the signal is " + signal);
     }  
 
     if(e.code === "NumpadMultiply"){
         number1 = display.value;
         signal="*";
         display.value= ""; 
+        log("Number 1 is " + number1 + " and the signal is " + signal);
     } 
 
-    if(e.code === "NumpadEnter"){
+    //Logical reult for (+, -, *, /)
 
-        if(signal ==="+"){
-            display.value = number1 + number2;
+    if(e.code === "NumpadEnter" && signal === "+" ){
+            let number2 = parseFloat(display.value);
+             let fResult = number1 + number2;
+             display.value = fResult;
             keysString[19]="";   
-            log(number1 + ";" + number2)
-    
-       }else if(signal ==="-"){
-            display.value = number1 - number2;
-            keysString[19]="";
-    
-        }else if(signal ==="*"){
-            display.value = number1 * number2;
-            keysString[19]="";
-    
-    
-        }else if(signal ==="/"){
-            display.value = number1 / number2;
-            keysString[19]="";
-    
-        } else if (signal ==="%"){
-            display.value = (number1 * number2) / 100 + number1;
-            keysString[19]="";
-            log(number1 + "," + n3)
-        }   
 
-    }
+       }else if(e.code === "NumpadEnter" && signal === "-" ){
+        let number2 = parseFloat(display.value);
+         let fResult = number1 - number2;
+         display.value = fResult;
+        keysString[19]="";   
+
+       }else if(e.code === "NumpadEnter" && signal === "*" ){
+        let number2 = parseFloat(display.value);
+         let fResult = number1 * number2;
+         display.value = fResult;
+        keysString[19]=""; 
+
+       }else if(e.code === "NumpadEnter" && signal === "/" ){
+        let number2 = parseFloat(display.value);
+         let fResult = number1 / number2;
+         display.value = fResult;
+        keysString[19]="";   
+       }   
+
 });
 
 //Calculator keypad functionality for "+"
 keys[15].addEventListener("click", (e)=> { 
     number1 = parseFloat(display.value);
     signal="+";
+    signalX = "+";
     display.value= "";
     log("Number1 is " + number1 + " Signal is " + signal)
 })
 
+var numberSignal = 0;
 
 //Calculator keypad functionality for "-"
 keys[11].addEventListener("click", ()=> { 
-    number1 = parseFloat(display.value);
+    number1 = display.value;
     signal="-";
+    signalX = "-"
     display.value= ""; 
-    keysString[11]=""; 
-    log("Number1 is " + number1 + " Signal is " + signal)
+    log("Number1 is " + number1 + " Signal is " + signal);
 })
 
 //Calculator keypad functionality for "*"
-keys[7].addEventListener("click", ()=> { 
-    number1 = parseFloat(display.value);
+keys[7].addEventListener("click", (e)=> { 
+    number1 = display.value;
     signal="*";
+    signalX = "*"
     display.value= ""; 
-    keysString[7]=""; 
     log("Number1 is " + number1 + " Signal is " + signal)
 })
 
 //Calculator keypad functionality for "/"
 keys[3].addEventListener("click", ()=> { 
-    number1 = parseFloat(display.value);
+    number1 = display.value;
     signal="/";
+    signalX = "/"
     display.value= ""; 
-    keysString[3]=""; 
     log("Number1 is " + number1 + " Signal is " + signal)
 })
 
 //Calculator keypad functionality for "%"
 keys[2].addEventListener("click", ()=> { 
-    number2 = parseFloat(display.value);
+    number2 = display.value;
     signal="%";
     display.value= ""; 
     keysString[2]=""; 
@@ -138,25 +142,53 @@ keys[19].addEventListener("click", ()=> {
    if(signal ==="+"){
         display.value = n1 + n2;
         keysString[19]="";   
+        log("N1 is, " + n1 + " N2 is " + n2)
 
    }else if(signal ==="-"){
         display.value = n1 - n2;
         keysString[19]="";
+        log("N1 is, " + n1 + " N2 is " + n2);
 
     }else if(signal ==="*"){
         display.value = n1 * n2;
         keysString[19]="";
+        log("N1 is, " + n1 + " N2 is " + n2);
 
 
     }else if(signal ==="/"){
         display.value = n1 / n2;
         keysString[19]="";
+        log("N1 is, " + n1 + " N2 is " + n2)
 
-    } else if (signal ==="%"){
-        display.value = (number1 * number2) / 100 + number1;
+    } else if (signal ==="%" && signalX === "+"){
+        let fResult = parseFloat((n1 * n3) / 100) + n1;
+        display.value = fResult;
         keysString[19]="";
-        log(n1 + "," + n3)
-    }   
+        log("N1 is " + n1 + ", N2 is " + n3); 
+        log("The siganlX is " + signalX);
+
+    }else if (signal ==="%" && signalX === "-"){
+        let fResult = parseFloat(n1 - (n1 * n3) / 100);
+        display.value = fResult;
+        keysString[19]="";
+        log("N1 is " + n1 + ", n3 is " + n3);
+        log("The siganlX is " + signalX);  
+        log(number1)
+
+    }else if (signal ==="%" && signalX === "*"){
+        let fResult = parseFloat((n1 * n3) / 100) * n1;
+        display.value = fResult;
+        keysString[19]="";
+        log("N1 is " + n1 + ", N2 is " + n3);
+        log("The siganlX is " + signalX);  
+
+    }else if (signal ==="%" && signalX === "/"){
+        let fResult = parseFloat((n1 * 100) / n3) / n1;
+        display.value = fResult;
+        keysString[19]="";
+        log("N1 is " + n1 + ", N2 is " + n3);
+        log("The siganlX is " + signalX);  
+    }          
 })
 
 
